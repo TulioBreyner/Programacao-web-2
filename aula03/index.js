@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const dotenv = require('dotenv');
 const conectaDB = require('./db');
 const alunosRouter = require('./routes/alunos.routes') // Rotas
@@ -9,6 +10,10 @@ const app = express();
 app.use(express.json());
 
 dotenv.config();
+
+app.use(cors({
+  origin: 'http://127.0.0.1:5500' 
+}));
 
 conectaDB(); // conexão com o MongoDB
 
